@@ -1,0 +1,22 @@
+version: "3"
+services:
+  frontend:
+    container_name: front
+    build:
+      context: ./front
+      dockerfile: DockerFile
+    image: fdanussi/front
+    ports:
+      - "3002:3002"
+    volumes:
+      - ./front:/usr/src/app
+  backend:
+    container_name: service
+    build:
+      context: ./service
+      dockerfile: DockerFile
+    image: fdanussi/service
+    ports:
+      - "3005:3005"
+    volumes:
+      - ./service:/usr/src/app
